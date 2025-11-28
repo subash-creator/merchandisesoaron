@@ -1,0 +1,58 @@
+.mainpage-container {
+  background: #000;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  min-height: 90vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.mainpage-main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* Floating Rocket Animation */
+.mainpage-img {
+  width: 110px;
+  margin-bottom: 14px;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+.mainpage-title {
+  font-size: 32px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.mainpage-subtitle {
+  font-size: 16px;
+  margin-top: 0;
+  color: #fff;
+  opacity: 0.9;
+}
+
+/* ========== Mobile Responsive ========== */
+@media (max-width: 768px) {
+  .mainpage-title {
+    font-size: 24px;
+  }
+
+  .mainpage-subtitle {
+    font-size: 14px;
+  }
+}
