@@ -5,9 +5,8 @@ import Mainpage from "./pages/Mainpage";
 
 function App() {
   return (
-    <Router>
+    <Router basename="/merchandise">
       <Routes>
-        {/* Merchandise Coming Soon Page */}
         <Route path="/" element={<Mainpage />} />
       </Routes>
     </Router>
