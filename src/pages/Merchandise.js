@@ -10,6 +10,10 @@ import greenHoodie from "../assets/greenhoodie.webp";
 import orangeHoodie from "../assets/orangehoodie.webp";
 import redHoodie from "../assets/redhoodie.webp";
 
+// ✅ ADDED LOGOS (only these two lines)
+import soaronTextLogo from "../assets/soaron_text.webp";
+import soaronCircleLogo from "../assets/soaron_circle.png";
+
 export default function Merchandise() {
   const hoodieOptions = [
     { name: "Black", img: blackHoodie, price: 799 },
@@ -30,7 +34,7 @@ export default function Merchandise() {
 
   const showMessage = (text) => {
     setMessage(text);
-    setTimeout(() => setMessage(""), 2000);
+    setTimeout(() => setMessage(""), 3000);
   };
 
   useEffect(() => {
@@ -61,29 +65,55 @@ export default function Merchandise() {
     showMessage("✔️ Item added to cart!");
   };
 
-  // 🔥 Runs when checkout closes (Cancel OR Success)
   const handleCloseCheckout = () => {
     setCheckoutOpen(false);
   };
 
-  // 🔥 Runs ONLY when order successful
   const handleOrderComplete = () => {
-    setCart([]); 
+    setCart([]);
     localStorage.removeItem("CART_DATA");
     showMessage("🎉 Order placed successfully!");
   };
 
   return (
     <div className="merch-page">
+      <div className="watermark">
+        {[
+          { top: "15%", left: "8%", size: 240 },
+          { top: "55%", left: "75%", size: 300 },
+          { top: "80%", left: "25%", size: 200 }
+        ]
+          .sort(() => Math.random() - 0.5) // randomize placement order
+          .slice(0, 3) // ensure exactly 3
+          .map((pos, i) => (
+            <img
+              key={i}
+              src={soaronCircleLogo}
+              alt="watermark"
+              className="watermark-img"
+              style={{
+                top: pos.top,
+                left: pos.left,
+                width: pos.size + "px",
+              }}
+            />
+          ))}
+      </div>
 
-      {message && <span className="top-message">{message}</span>}
 
-      <h1 className="title">Soaron Official Hoodies</h1>
+      
+
+      {/* ✅ ADDED HEADER LOGO */}
+      <div className="soaron-logo-container">
+        <img src={soaronTextLogo} className="soaron-header-logo" alt="Soaron" />
+      </div>
+
+      <h1 className="title"> Official Hoodies</h1>
       <p className="subtitle">Premium aviation-grade comfort — limited edition.</p>
 
       <div className="hoodie-row">
         {hoodieOptions.map((item, i) => (
-          <div 
+          <div
             key={i}
             className={`hoodie-image-box ${selectedColor?.name === item.name ? "active" : ""}`}
             onClick={() => {
@@ -91,6 +121,10 @@ export default function Merchandise() {
               showMessage(`🧥 Selected: ${item.name}`);
             }}
           >
+
+            {/* ✅ ADDED LOGO ON HOODIE PREVIEW */}
+
+
             <img src={item.img} alt={item.name} />
             <p>{item.name}</p>
             <p className="price">₹{item.price}</p>
@@ -102,7 +136,7 @@ export default function Merchandise() {
         <h3>Select Size</h3>
         <div className="size-buttons">
           {sizeOptions.map((sz) => (
-            <button 
+            <button
               key={sz}
               className={`size-btn ${selectedSize === sz ? "selected" : ""}`}
               onClick={() => {
@@ -119,11 +153,11 @@ export default function Merchandise() {
           Add to Cart 🛒
         </button>
       </div>
-
+      {message && <span className="top-message">{message}</span>}
       <CartPanel cart={cart} onCheckout={() => setCheckoutOpen(true)} />
 
       {checkoutOpen && (
-        <Checkout 
+        <Checkout
           cart={cart}
           onClose={handleCloseCheckout}
           onOrderComplete={handleOrderComplete}

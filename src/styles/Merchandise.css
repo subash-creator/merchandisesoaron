@@ -5,6 +5,8 @@ body {
   font-family: "Inter", sans-serif;
   margin: 0;
 }
+/* ===== WATERMARK BACKGROUND ===== */
+
 
 /* ===================== PAGE LAYOUT ===================== */
 .merch-page {
@@ -23,6 +25,20 @@ body {
   opacity: 0.6;
   font-size: 1.2rem;
 }
+.watermark {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Watermark images */
+.watermark-img {
+  position: absolute;
+  opacity: 0.1;  /* very light */
+  filter: blur(1px);
+}
+
 
 /* ===================== HOODIE ROW (NEW STYLE) ===================== */
 .hoodie-row {
@@ -196,3 +212,16 @@ body {
   from { opacity: 0; transform: translateX(-50%) scale(0.9); }
   to { opacity: 1; transform: translateX(-50%) scale(1); }
 }
+.soaron-logo-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.soaron-header-logo {
+  width: 280px;
+  opacity: 0.95;
+}
+
+
