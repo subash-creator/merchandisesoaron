@@ -1,13 +1,18 @@
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-// Pages
-import Mainpage from "./pages/Mainpage";
+import Merchandise from "./pages/Merchandise";
+import Checkout from "./components/Checkout";
 
 function App() {
   return (
-    <Router basename="/merchandise">
+    <Router>
       <Routes>
-        <Route path="/" element={<Mainpage />} />
+        {/* Main page (default route) */}
+        <Route path="/merchandise" element={<Merchandise />} />
+
+        {/* Checkout Page */}
+        <Route path="/checkout" element={<Checkout />} />
       </Routes>
     </Router>
   );
