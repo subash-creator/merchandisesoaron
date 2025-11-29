@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/merchandise/static/css/main.23126332.css",
+    "main.js": "/merchandise/static/js/main.43f7d3fa.js",
+    "static/media/greenhoodie.webp": "/merchandise/static/media/greenhoodie.152aec8b241dfad5e8bc.webp",
+    "static/media/redhoodie.webp": "/merchandise/static/media/redhoodie.2dfbf7b2cbab5f67b73e.webp",
+    "static/media/bluehoodie.webp": "/merchandise/static/media/bluehoodie.dbe598940d813ba5edb4.webp",
+    "static/media/orangehoodie.webp": "/merchandise/static/media/orangehoodie.6941db3cddbf888dfc5d.webp",
+    "static/media/blackhoodie.webp": "/merchandise/static/media/blackhoodie.dbf03050771204cc7717.webp",
+    "static/media/whitehoodie.webp": "/merchandise/static/media/whitehoodie.00c13a3aa11bf1c5855f.webp",
+    "static/media/soaron_circle.png": "/merchandise/static/media/soaron_circle.f988b6f3931cf33ea8fa.png",
+    "static/media/soaron_text.webp": "/merchandise/static/media/soaron_text.a0d1e761365981e0c91d.webp",
+    "index.html": "/merchandise/index.html",
+    "main.23126332.css.map": "/merchandise/static/css/main.23126332.css.map",
+    "main.43f7d3fa.js.map": "/merchandise/static/js/main.43f7d3fa.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.23126332.css",
+    "static/js/main.43f7d3fa.js"
+  ]
+}
