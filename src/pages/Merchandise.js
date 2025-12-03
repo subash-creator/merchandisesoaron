@@ -10,18 +10,17 @@ import greenHoodie from "../assets/greenhoodie.webp";
 import orangeHoodie from "../assets/orangehoodie.webp";
 import redHoodie from "../assets/redhoodie.webp";
 
-// ✅ ADDED LOGOS (only these two lines)
 import soaronTextLogo from "../assets/soaron_text.webp";
 import soaronCircleLogo from "../assets/soaron_circle.png";
 
 export default function Merchandise() {
   const hoodieOptions = [
-    { name: "Black", img: blackHoodie, price: 799 },
-    { name: "White", img: whiteHoodie, price: 799 },
-    { name: "Blue", img: blueHoodie, price: 799 },
-    { name: "Green", img: greenHoodie, price: 799 },
-    { name: "Orange", img: orangeHoodie, price: 799 },
-    { name: "Red", img: redHoodie, price: 799 },
+    { name: "Black", img: blackHoodie, price: 799, colorCode: "#000000" },
+    { name: "White", img: whiteHoodie, price: 799, colorCode: "#ffffff" },
+    { name: "Blue", img: blueHoodie, price: 799, colorCode: "#1f75fe" },
+    { name: "Green", img: greenHoodie, price: 799, colorCode: "#2ecc71" },
+    { name: "Orange", img: orangeHoodie, price: 799, colorCode: "#ff7f00" },
+    { name: "Red", img: redHoodie, price: 799, colorCode: "#e74c3c" },
   ];
 
   const sizeOptions = ["S", "M", "L", "XL", "XXL"];
@@ -29,7 +28,8 @@ export default function Merchandise() {
   const [selectedColor, setSelectedColor] = useState(null);
   const [selectedSize, setSelectedSize] = useState("M");
   const [cart, setCart] = useState([]);
-  const [checkoutOpen, setCheckoutOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
   const [message, setMessage] = useState("");
 
   const showMessage = (text) => {
@@ -38,8 +38,8 @@ export default function Merchandise() {
   };
 
   useEffect(() => {
-    const savedCart = JSON.parse(localStorage.getItem("CART_DATA"));
-    if (savedCart) setCart(savedCart);
+    const saved = JSON.parse(localStorage.getItem("CART_DATA"));
+    if (saved) setCart(saved);
   }, []);
 
   useEffect(() => {
@@ -47,122 +47,166 @@ export default function Merchandise() {
   }, [cart]);
 
   const addToCart = () => {
-    if (!selectedColor) {
-      showMessage("❗ Please select a hoodie first!");
-      return;
-    }
+    if (!selectedColor)
+      return showMessage("❗ Please select a hoodie first!");
 
-    setCart([
-      ...cart,
+    setCart((prev) => [
+      ...prev,
       {
         name: selectedColor.name,
         size: selectedSize,
         img: selectedColor.img,
-        price: 799
-      }
+        color: selectedColor.colorCode,
+        price: 799,
+        qty: 1,
+      },
     ]);
 
-    showMessage("✔️ Item added to cart!");
+    showMessage("✔️ Added to cart!");
   };
 
-  const handleCloseCheckout = () => {
-    setCheckoutOpen(false);
+  const updateQty = (index, qty) => {
+    if (qty <= 0) return;
+    const updated = [...cart];
+    updated[index].qty = qty;
+    setCart(updated);
   };
 
-  const handleOrderComplete = () => {
+  const removeFromCart = (index) => {
+    setCart(cart.filter((_, i) => i !== index));
+    showMessage("🗑️ Removed!");
+  };
+
+  const openCart = () => {
+    setIsCheckoutOpen(false);
+    setIsCartOpen(true);
+  };
+
+  const closePanels = () => {
+    setIsCartOpen(false);
+    setIsCheckoutOpen(false);
+  };
+
+  const beginCheckout = () => {
+    if (cart.length === 0)
+      return showMessage("🛍️ Add something before checkout!");
+    setIsCartOpen(false);
+    setIsCheckoutOpen(true);
+  };
+
+  const completeOrder = () => {
     setCart([]);
     localStorage.removeItem("CART_DATA");
-    showMessage("🎉 Order placed successfully!");
+    showMessage("🎉 Order Completed!");
+    closePanels();
   };
 
   return (
     <div className="merch-page">
+
+      {/* Watermarks */}
       <div className="watermark">
-        {[
-          { top: "15%", left: "8%", size: 240 },
+        {[{ top: "15%", left: "8%", size: 240 },
           { top: "55%", left: "75%", size: 300 },
-          { top: "80%", left: "25%", size: 200 }
-        ]
-          .sort(() => Math.random() - 0.5) // randomize placement order
-          .slice(0, 3) // ensure exactly 3
+          { top: "80%", left: "25%", size: 200 }]
           .map((pos, i) => (
-            <img
-              key={i}
-              src={soaronCircleLogo}
-              alt="watermark"
-              className="watermark-img"
-              style={{
-                top: pos.top,
-                left: pos.left,
-                width: pos.size + "px",
-              }}
-            />
+            <img key={i} src={soaronCircleLogo} className="watermark-img"
+              alt="" style={{ top: pos.top, left: pos.left, width: pos.size }} />
           ))}
       </div>
 
-
-      
-
-      {/* ✅ ADDED HEADER LOGO */}
+      {/* Logo */}
       <div className="soaron-logo-container">
         <img src={soaronTextLogo} className="soaron-header-logo" alt="Soaron" />
       </div>
 
-      <h1 className="title"> Official Hoodies</h1>
+      <h1 className="title">Official Hoodies</h1>
       <p className="subtitle">Premium aviation-grade comfort — limited edition.</p>
 
-      <div className="hoodie-row">
-        {hoodieOptions.map((item, i) => (
-          <div
-            key={i}
-            className={`hoodie-image-box ${selectedColor?.name === item.name ? "active" : ""}`}
-            onClick={() => {
-              setSelectedColor(item);
-              showMessage(`🧥 Selected: ${item.name}`);
-            }}
-          >
+      <div className="single-section">
 
-            {/* ✅ ADDED LOGO ON HOODIE PREVIEW */}
-
-
-            <img src={item.img} alt={item.name} />
-            <p>{item.name}</p>
-            <p className="price">₹{item.price}</p>
-          </div>
-        ))}
-      </div>
-
-      <div className="size-section">
-        <h3>Select Size</h3>
-        <div className="size-buttons">
-          {sizeOptions.map((sz) => (
-            <button
-              key={sz}
-              className={`size-btn ${selectedSize === sz ? "selected" : ""}`}
+        {/* Hoodie Cards */}
+        <div className="hoodie-row">
+          {hoodieOptions.map((item) => (
+            <div
+              key={item.name}
+              className={`hoodie-image-box ${
+                selectedColor?.name === item.name ? "active" : ""
+              }`}
               onClick={() => {
-                setSelectedSize(sz);
-                showMessage(`📏 Size selected: ${sz}`);
-              }}
-            >
-              {sz}
-            </button>
+                setSelectedColor(item);
+                showMessage(`🧥 Selected: ${item.name}`);
+              }}>
+              <img src={item.img} alt={item.name} />
+              <p>{item.name}</p>
+              <p className="price">₹{item.price}</p>
+            </div>
           ))}
         </div>
 
-        <button className="add-cart-btn" onClick={addToCart}>
-          Add to Cart 🛒
-        </button>
-      </div>
-      {message && <span className="top-message">{message}</span>}
-      <CartPanel cart={cart} onCheckout={() => setCheckoutOpen(true)} />
+        {/* Size Selector */}
+        <div className="size-section">
+          <h3>Select Size</h3>
 
-      {checkoutOpen && (
-        <Checkout
-          cart={cart}
-          onClose={handleCloseCheckout}
-          onOrderComplete={handleOrderComplete}
-        />
+          <div className="size-buttons">
+            {sizeOptions.map((sz) => (
+              <button
+                key={sz}
+                className={`size-btn ${selectedSize === sz ? "selected" : ""}`}
+                onClick={() => setSelectedSize(sz)}>
+                {sz}
+              </button>
+            ))}
+          </div>
+
+          <button className="add-cart-btn" onClick={addToCart}>
+            Add to Cart 🛒
+          </button>
+        </div>
+
+        {/* Tabs */}
+        <div className="tabs">
+          <button className="size-btn" onClick={openCart}>🛒 My Cart</button>
+
+          <button
+            className="size-btn"
+            onClick={beginCheckout}
+            disabled={cart.length === 0}
+            style={{ opacity: cart.length === 0 ? 0.4 : 1 }}>
+            💳 Checkout
+          </button>
+        </div>
+      </div>
+
+      {/* Overlay when panel open */}
+      {(isCartOpen || isCheckoutOpen) && (
+        <div className="overlay" onClick={closePanels}></div>
       )}
+
+      {/* Sliding Cart */}
+      {isCartOpen && (
+        <div className="slide-panel">
+          <CartPanel
+            cart={cart}
+            onRemove={removeFromCart}
+            onUpdateQty={updateQty}
+            onCheckout={beginCheckout}
+          />
+        </div>
+      )}
+
+      {/* Sliding Checkout */}
+      {isCheckoutOpen && (
+        <div className="slide-panel">
+          <Checkout
+            cart={cart}
+            onClose={closePanels}
+            onOrderComplete={completeOrder}
+          />
+        </div>
+      )}
+
+      {message && <span className="top-message">{message}</span>}
     </div>
   );
 }

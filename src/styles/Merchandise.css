@@ -5,6 +5,7 @@ body {
   font-family: "Inter", sans-serif;
   margin: 0;
 }
+
 /* ===== WATERMARK BACKGROUND ===== */
 
 
@@ -224,4 +225,63 @@ body {
   opacity: 0.95;
 }
 
+/* ===================== RESPONSIVE MOBILE FIX ===================== */
+@media (max-width: 600px) {
+  .hoodie-row {
+    gap: 12px;
+    position: flex;
+  }
 
+  .hoodie-image-box {
+    width: 130px;
+    padding: 12px;
+  }
+
+  .hoodie-image-box img {
+    height: 120px;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .soaron-header-logo {
+    width: 220px;
+  }
+}
+
+/* Slide-in Panel */
+.slide-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 430px;
+  height: 100vh;
+  background: #0a0a0a;
+  border-left: 1px solid #333;
+  z-index: 2000;
+  animation: slideIn 0.35s ease forwards;
+  overflow-y: auto;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+/* Dimmed BG */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  backdrop-filter: blur(2px);
+  z-index: 1500;
+}
+
+/* Tabs container */
+.tabs {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+}
