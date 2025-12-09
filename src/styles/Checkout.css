@@ -39,10 +39,61 @@
   font-weight: bold;
   color: #000;
 }
+.checkout-popup h2 {
+  font-size: 26px;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 8px;
+}
+
+.total-text {
+  font-size: 20px;
+  margin-top: -2px;
+  color: #111;
+  font-weight: 700;
+}
+
+/* === PAYMENT INFO === */
+.payment-info {
+  background: #f3f3f3;
+  padding: 4px 18px;
+  border-radius: 12px;
+  
+  font-size: 15px;
+  color: #333;
+  font-weight: 500;
+  border: 1px solid rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+ 
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+.payment-info b {
+  color: #000;
+}
+.close-checkout-btn {
+  position: absolute;
+  top: 4vh;
+  right: 70vh;
+  background: transparent;
+  border: none;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #555;
+  transition: 0.2s ease-in-out;
+}
+
+.close-checkout-btn:hover {
+  color: #000;
+  transform: scale(1.15);
+}
+
 
 /* === INPUT FIELDS === */
 .checkout-popup input {
-  width: 100%;
+  width: 96%;
   padding: 12px;
   margin: 8px 0;
   border-radius: 8px;

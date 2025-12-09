@@ -64,12 +64,7 @@ export default function Checkout({ cart, onClose, onOrderComplete }) {
 
         {error && <span className="error-text">{error}</span>}
 
-        {!success && (
-          <>
-            <h2>Checkout</h2>
-            <p>Total: <strong>₹{total}</strong></p>
-          </>
-        )}
+
 
         {success && (
           <>
@@ -82,8 +77,15 @@ export default function Checkout({ cart, onClose, onOrderComplete }) {
 
         {!success && (
           <>
-            <p>Pay via UPI: <strong>soaron@upi</strong></p>
-            <p>Bank: <strong>123456 | IFSC: SOAR00011</strong></p>
+            <button className="close-checkout-btn" onClick={onClose}>✕</button>
+
+            <h2>Checkout</h2>
+            <p className="total-text">Total: ₹{total}</p>
+            <div className="payment-info">
+              <p>Pay via UPI: <b>soaron@upi</b></p>
+              <p>Bank: <b>123456</b> | IFSC: <b>SOAR00011</b></p>
+            </div>
+
 
             <input placeholder="Full Name" value={user.name}
               onChange={(e) => setUser({ ...user, name: e.target.value })} />
@@ -106,7 +108,7 @@ export default function Checkout({ cart, onClose, onOrderComplete }) {
             <button className="confirm-btn" onClick={submitOrder} disabled={loading}>
               {loading ? <div className="loader"></div> : "Confirm Order"}
             </button>
-
+            
             <button className="cancel-btn" onClick={onClose}>
               Cancel
             </button>
