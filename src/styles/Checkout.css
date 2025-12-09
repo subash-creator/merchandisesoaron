@@ -57,22 +57,27 @@
 }
 
 /* === BUTTONS === */
-.confirm-btn {
-  background: black;
-  color: white;
+.checkout-popup .confirm-btn {
+  background: #28a745 !important;
+  color: #fff;
   width: 100%;
   padding: 12px;
   font-size: 17px;
+  font-weight: 600;
   border: none;
   border-radius: 10px;
   margin-top: 15px;
   cursor: pointer;
   transition: 0.2s ease;
+  box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3);
 }
 
-.confirm-btn:hover {
-  opacity: 0.85;
+.checkout-popup .confirm-btn:hover {
+  background: #218838 !important;
+  transform: translateY(-2px);
 }
+
+
 
 .cancel-btn {
   background: #d9534f;

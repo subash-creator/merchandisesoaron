@@ -1,30 +1,73 @@
+/* Overlay */
+.cart-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(3px);
+  z-index: 9998;
+  animation: fadeIn 0.25s ease-in-out;
+}
+
+/* Popup Cart Panel */
 .cart-panel {
   width: 420px;
-  height: 100vh;
+  max-height: 70vh; /* reduced height */
   position: fixed;
-  right: 0;
-  top: 0;
-  background: rgba(18, 18, 18, 0.85);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  background: rgba(18, 18, 18, 0.96);
   backdrop-filter: blur(18px);
-  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.08);
   color: #fff;
   padding: 25px;
   display: flex;
   flex-direction: column;
-  animation: slideIn 0.35s ease-out;
+  animation: popupIn 0.35s ease-out forwards;
   z-index: 9999;
   overflow-y: auto;
 }
 
-@keyframes slideIn {
+/* Add scroll to area where items are */
+.cart-items {
+  max-height: 45vh; /* limit item area */
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.bottom {
+  margin-top: 20px; /* ensures footer never touches edge */
+}
+
+
+/* Animations */
+@keyframes popupIn {
   from {
-    transform: translateX(100%);
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.6);
   }
   to {
-    transform: translateX(0);
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
   }
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Header */
 .cart-header {
   text-align: center;
   border-bottom: 1px solid rgba(255,255,255,0.08);
@@ -38,11 +81,8 @@
   font-size: 17px;
 }
 
-.cart-items {
-  margin-top: 20px;
-  display: grid;
-  gap: 18px;
-}
+/* Items */
+
 
 .cart-item {
   display: flex;
@@ -87,6 +127,7 @@
   font-weight: bold;
 }
 
+/* Quantity */
 .qty-wrapper {
   display: flex;
   align-items: center;
@@ -115,6 +156,7 @@
   font-weight: 700;
 }
 
+/* Remove */
 .remove-btn {
   background: transparent;
   border: none;
@@ -130,6 +172,7 @@
   color: #ff2f2f;
 }
 
+/* Footer */
 .bottom {
   padding-top: 18px;
   border-top: 1px solid rgba(255,255,255,0.1);
@@ -148,7 +191,7 @@
   padding: 14px;
   border-radius: 12px;
   background: #ffce53;
-  color: #111;
+  color: white;
   font-size: 17px;
   font-weight: 700;
   cursor: pointer;
@@ -156,5 +199,17 @@
 }
 
 .checkout:hover {
-  background: #e4b537;
+  background: green;
+}
+
+/* Close Button */
+.close-btn {
+  background: transparent;
+  color: white;
+  font-size: 22px;
+  border: none;
+  position: absolute;
+  right: 18px;
+  top: 16px;
+  cursor: pointer;
 }

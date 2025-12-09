@@ -3,10 +3,25 @@ body {
   background: #000;
   color: #fff;
   font-family: "Inter", sans-serif;
-  margin: 0;
+  margin-bottom: 10vh;
+}
+body.noscroll {
+  overflow: hidden !important;
 }
 
-/* ===== WATERMARK BACKGROUND ===== */
+body.noscroll::-webkit-scrollbar {
+  display: none !important;
+}
+
+html {
+  scrollbar-width: none; /* Firefox */
+}
+
+html::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+
 
 
 /* ===================== PAGE LAYOUT ===================== */
@@ -105,7 +120,13 @@ body {
   gap: 12px;
   margin-top: 10px;
 }
+.size-section h3{
 
+ 
+  font-size: 24px;
+  font-weight: bold;
+  
+}
 .size-btn {
   padding: 10px 18px;
   border: 1px solid #444;
@@ -156,6 +177,14 @@ body {
   cursor: pointer;
   width: 100%;
   margin-top: 10px;
+}
+.selected-price {
+  font-size: 22px;
+  font-weight: bold;
+  color: #0ed855;
+  margin-top: 18px;
+  margin-bottom: 30px;
+ 
 }
 
 /* ===================== CHECKOUT ===================== */
@@ -250,24 +279,7 @@ body {
   }
 }
 
-/* Slide-in Panel */
-.slide-panel {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 430px;
-  height: 100vh;
-  background: #0a0a0a;
-  border-left: 1px solid #333;
-  z-index: 2000;
-  animation: slideIn 0.35s ease forwards;
-  overflow-y: auto;
-}
 
-@keyframes slideIn {
-  from { transform: translateX(100%); }
-  to { transform: translateX(0); }
-}
 
 /* Dimmed BG */
 .overlay {
