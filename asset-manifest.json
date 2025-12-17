@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/merchandise.soaron.co/static/css/main.ba60acff.css",
-    "main.js": "/merchandise.soaron.co/static/js/main.31a86443.js",
-    "static/media/greenhoodie.webp": "/merchandise.soaron.co/static/media/greenhoodie.152aec8b241dfad5e8bc.webp",
-    "static/media/redhoodie.webp": "/merchandise.soaron.co/static/media/redhoodie.2dfbf7b2cbab5f67b73e.webp",
-    "static/media/bluehoodie.webp": "/merchandise.soaron.co/static/media/bluehoodie.dbe598940d813ba5edb4.webp",
-    "static/media/orangehoodie.webp": "/merchandise.soaron.co/static/media/orangehoodie.6941db3cddbf888dfc5d.webp",
-    "static/media/blackhoodie.webp": "/merchandise.soaron.co/static/media/blackhoodie.dbf03050771204cc7717.webp",
-    "static/media/whitehoodie.webp": "/merchandise.soaron.co/static/media/whitehoodie.00c13a3aa11bf1c5855f.webp",
-    "static/media/soaron_circle.png": "/merchandise.soaron.co/static/media/soaron_circle.f988b6f3931cf33ea8fa.png",
-    "static/media/soaron_text.webp": "/merchandise.soaron.co/static/media/soaron_text.a0d1e761365981e0c91d.webp",
-    "index.html": "/merchandise.soaron.co/index.html",
-    "main.ba60acff.css.map": "/merchandise.soaron.co/static/css/main.ba60acff.css.map",
-    "main.31a86443.js.map": "/merchandise.soaron.co/static/js/main.31a86443.js.map"
+    "main.css": "/static/css/main.ba60acff.css",
+    "main.js": "/static/js/main.7f92586a.js",
+    "static/media/greenhoodie.webp": "/static/media/greenhoodie.152aec8b241dfad5e8bc.webp",
+    "static/media/redhoodie.webp": "/static/media/redhoodie.2dfbf7b2cbab5f67b73e.webp",
+    "static/media/bluehoodie.webp": "/static/media/bluehoodie.dbe598940d813ba5edb4.webp",
+    "static/media/orangehoodie.webp": "/static/media/orangehoodie.6941db3cddbf888dfc5d.webp",
+    "static/media/blackhoodie.webp": "/static/media/blackhoodie.dbf03050771204cc7717.webp",
+    "static/media/whitehoodie.webp": "/static/media/whitehoodie.00c13a3aa11bf1c5855f.webp",
+    "static/media/soaron_circle.png": "/static/media/soaron_circle.f988b6f3931cf33ea8fa.png",
+    "static/media/soaron_text.webp": "/static/media/soaron_text.a0d1e761365981e0c91d.webp",
+    "index.html": "/index.html",
+    "main.ba60acff.css.map": "/static/css/main.ba60acff.css.map",
+    "main.7f92586a.js.map": "/static/js/main.7f92586a.js.map"
   },
   "entrypoints": [
     "static/css/main.ba60acff.css",
-    "static/js/main.31a86443.js"
+    "static/js/main.7f92586a.js"
   ]
 }
