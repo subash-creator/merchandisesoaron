@@ -8,10 +8,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* Main page (default route) */}
-        <Route path="/merchandise" element={<Merchandise />} />
-
-        {/* Checkout Page */}
+        <Route path="/" element={<Merchandise />} />
         <Route path="/checkout" element={<Checkout />} />
       </Routes>
     </Router>

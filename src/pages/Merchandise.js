@@ -15,12 +15,12 @@ import soaronCircleLogo from "../assets/soaron_circle.png";
 
 export default function Merchandise() {
   const hoodieOptions = [
-    { name: "Black", img: blackHoodie,  colorCode: "#000000" },
-    { name: "White", img: whiteHoodie,  colorCode: "#ffffff" },
-    { name: "Blue", img: blueHoodie,  colorCode: "#1f75fe" },
+    { name: "Black", img: blackHoodie, colorCode: "#000000" },
+    { name: "White", img: whiteHoodie, colorCode: "#ffffff" },
+    { name: "Blue", img: blueHoodie, colorCode: "#1f75fe" },
     { name: "Green", img: greenHoodie, colorCode: "#2ecc71" },
-    { name: "Orange", img: orangeHoodie,  colorCode: "#ff7f00" },
-    { name: "Red", img: redHoodie,  colorCode: "#e74c3c" },
+    { name: "Orange", img: orangeHoodie, colorCode: "#ff7f00" },
+    { name: "Red", img: redHoodie, colorCode: "#e74c3c" },
   ];
 
   const sizeOptions = ["S", "M", "L", "XL", "XXL"];
@@ -53,24 +53,39 @@ export default function Merchandise() {
     if (!selectedSize)
       return showMessage("❗ Please select size!");
 
-    setCart((prev) => [
-      ...prev,
-      {
-        name: selectedColor.name,
-        size: selectedSize,
-        img: selectedColor.img,
-        color: selectedColor.colorCode,
-        price: 799,
-        qty: 1,
-      },
-    ]);
+    const existingIndex = cart.findIndex(
+      (item) =>
+        item.name === selectedColor.name &&
+        item.size === selectedSize
+    );
 
-    // Reset selections after adding to cart
+    if (existingIndex !== -1) {
+      // Increase quantity instead of adding duplicate
+      const updatedCart = [...cart];
+      updatedCart[existingIndex].qty += 1;
+      setCart(updatedCart);
+    } else {
+      // Add new item if different
+      setCart((prev) => [
+        ...prev,
+        {
+          name: selectedColor.name,
+          size: selectedSize,
+          img: selectedColor.img,
+          color: selectedColor.colorCode,
+          price: 799,
+          qty: 1,
+        },
+      ]);
+    }
+
+    // Reset selections
     setSelectedColor(null);
     setSelectedSize("");
 
-    showMessage("✔️ Added to cart!");
+    showMessage("🧺 Updated Cart!");
   };
+
 
 
   const updateQty = (index, qty) => {
@@ -146,7 +161,7 @@ export default function Merchandise() {
               }}>
               <img src={item.img} alt={item.name} />
               <p>{item.name}</p>
-            
+
             </div>
           ))}
         </div>
