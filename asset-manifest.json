@@ -1,21 +1,21 @@
 {
   "files": {
     "main.css": "/static/css/main.ba60acff.css",
-    "main.js": "/static/js/main.7f92586a.js",
-    "static/media/greenhoodie.webp": "/static/media/greenhoodie.152aec8b241dfad5e8bc.webp",
-    "static/media/redhoodie.webp": "/static/media/redhoodie.2dfbf7b2cbab5f67b73e.webp",
-    "static/media/bluehoodie.webp": "/static/media/bluehoodie.dbe598940d813ba5edb4.webp",
-    "static/media/orangehoodie.webp": "/static/media/orangehoodie.6941db3cddbf888dfc5d.webp",
-    "static/media/blackhoodie.webp": "/static/media/blackhoodie.dbf03050771204cc7717.webp",
-    "static/media/whitehoodie.webp": "/static/media/whitehoodie.00c13a3aa11bf1c5855f.webp",
+    "main.js": "/static/js/main.0cebc3c6.js",
     "static/media/soaron_circle.png": "/static/media/soaron_circle.f988b6f3931cf33ea8fa.png",
     "static/media/soaron_text.webp": "/static/media/soaron_text.a0d1e761365981e0c91d.webp",
+    "static/media/redhoodie.webp": "/static/media/redhoodie.ecfa0764e27a769aa574.webp",
+    "static/media/blackhoodie.webp": "/static/media/blackhoodie.74f83784600115ae4295.webp",
+    "static/media/bluehoodie.webp": "/static/media/bluehoodie.d1439ac14e78b37b3bf1.webp",
+    "static/media/orangehoodie.webp": "/static/media/orangehoodie.b453cd16aec82800a697.webp",
+    "static/media/greenhoodie.webp": "/static/media/greenhoodie.54e7e4152772f5dd05f8.webp",
+    "static/media/whitehoodie.webp": "/static/media/whitehoodie.59e4edfaf23256c0dc48.webp",
     "index.html": "/index.html",
     "main.ba60acff.css.map": "/static/css/main.ba60acff.css.map",
-    "main.7f92586a.js.map": "/static/js/main.7f92586a.js.map"
+    "main.0cebc3c6.js.map": "/static/js/main.0cebc3c6.js.map"
   },
   "entrypoints": [
     "static/css/main.ba60acff.css",
-    "static/js/main.7f92586a.js"
+    "static/js/main.0cebc3c6.js"
   ]
 }
